@@ -1,0 +1,836 @@
+@import "vars";
+@import "mixins";
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $font-size;
+}
+
+body {
+  font-family: $main-fonts;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+picture {
+  display: block;
+  img {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.top {
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: $background-main;
+  &__flex {
+    @include flexbox(row, wrap, space-between, center, center);
+    padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
+    max-width: 100%;
+    min-height: 75px;
+  }
+  &__left {
+    @include flexbox(row, wrap, flex-start, center);
+    gap: 2.6rem;
+    max-width: 10.5%;
+  }
+  &__link-site {
+    cursor: pointer;
+  }
+  &__link-site_icon {
+    position: relative;
+    svg {
+      position: absolute;
+      top: -6px;
+      right: -9px;
+      text {
+        fill: #fff;
+        @include text-styles(normal, 400, 12px, normal, #fff);
+      }
+    }
+  }
+  &__right {
+    @include flexbox(row, wrap, flex-start, center);
+    gap: 2.1rem;
+    max-width: 15.5%;
+  }
+  &__checkbox {
+    position: absolute;
+    visibility: hidden;
+    left: -9999999px;
+    &:checked ~ .mobile-menu {
+      right: 0;
+    }
+  }
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 75px;
+  right: -232px;
+  z-index: 2;
+  transition: right 0.6s;
+  width: 232px;
+  background: #ffffff;
+  box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+  padding: 32px;
+  box-sizing: border-box;
+  &__link-site {
+    align-items: center;
+    justify-content: space-around;
+    background-color: #e8e8e8;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    display: none;
+  }
+  &__heading {
+    @include text-styles(normal, 700, 14px, 17px, #000000);
+  }
+  &__link {
+    @include text-styles(normal, 400, 14px, 17px, #6f6e6e);
+    &:hover {
+      color: $color-accent;
+    }
+  }
+  &__title {
+    @include text-styles(normal, 400, 14px, 17px, $color-accent);
+  }
+  &__list {
+    @include flexbox(column, nowrap, flex-start);
+    list-style-type: none;
+    padding-left: 21px;
+    gap: 11px;
+    margin-top: 12px;
+  }
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 24px;
+  }
+}
+
+.promo {
+  background-color: $promo-color;
+  &__flex {
+    display: flex;
+    gap: 4.1rem;
+    max-width: 100%;
+  }
+  &__img {
+    max-width: 50%;
+  }
+  &__content {
+    max-width: 37.5%;
+  }
+  &__info {
+    border-left: 0.75rem solid $color-accent;
+    padding-left: 1rem;
+    margin-top: 48%;
+  }
+  &__title {
+    overflow-wrap: normal;
+    @include text-styles(normal, 900, 3rem, normal, $background-main);
+  }
+  &__heading {
+    overflow-wrap: normal;
+    @include text-styles(normal, 700, 2rem, normal, $background-main);
+    &_pink {
+      color: $color-accent;
+    }
+  }
+}
+
+.sale {
+  padding-top: 4.1rem;
+  padding-bottom: 6rem;
+  &__flex {
+    @include flexbox(row, wrap);
+    gap: 1.9rem;
+    max-width: 100%;
+  }
+  &__item {
+    position: relative;
+    min-height: 260px;
+    max-width: 31.5%;
+    &_big {
+      min-height: 180px;
+      max-width: 100%;
+    }
+  }
+  &__img {
+    min-height: 3.2rem;
+  }
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 75%;
+  }
+  &__text {
+    text-align: center;
+    padding-bottom: 0.3rem;
+    @include text-styles(normal, 400, 1rem, normal, #fff);
+  }
+  &__heading {
+    @include text-styles(normal, 700, 1.5rem, normal, $color-accent);
+  }
+}
+
+.product-box {
+  padding-bottom: 3.8rem;
+  &__content {
+    @include flexbox(column, nowrap, flex-start, center);
+    max-width: 100%;
+  }
+  &__heading {
+    padding-bottom: 0.4rem;
+    @include text-styles(normal, 400, 1.9rem, normal, $background-main);
+  }
+  &__text {
+    padding-bottom: 3rem;
+    @include text-styles(normal, 400, 0.9rem, normal, #9f9f9f);
+  }
+  &__flex {
+    @include flexbox(row, wrap);
+    gap: 1.9rem;
+    padding-bottom: 3rem;
+    max-width: 100%;
+  }
+  &__btn {
+    padding: 1rem 2.5rem;
+    border: 0.1rem solid #ff6a6a;
+    background: transparent;
+    max-width: 19%;
+    cursor: pointer;
+    min-height: 48px;
+    transition: all 0.4s;
+    @include text-styles(normal, 400, 1rem, normal, #f26376);
+    &:hover {
+      color: #fff;
+      background-color: #f26376;
+    }
+  }
+}
+
+.product {
+  @include flexbox(column);
+  max-width: 31.5%;
+  position: relative;
+  min-height: 581px;
+  &:hover .product__img {
+    filter: brightness(0.5);
+  }
+  &:hover .product__add {
+    @include flexbox();
+  }
+  &__add {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    gap: 11px;
+    border: 2px solid #fff;
+    padding: 12px 14px;
+    width: 150px;
+    min-height: 44px;
+    @include text-styles(normal, 400, 14px, normal, #fff);
+    .icon {
+      display: none;
+    }
+
+    .icon-default {
+      display: block;
+    }
+
+    &:hover {
+      box-shadow: 0 0 5px #fff;
+
+      .icon-default {
+        display: none;
+      }
+
+      .icon-hover {
+        display: block;
+      }
+    }
+  }
+  &__content {
+    padding: 1.5rem 1.4rem 1.1rem 1.3rem;
+    background-color: #f8f8f8;
+    min-height: 166px;
+  }
+  &__heading {
+    display: block;
+    transition: transform 0.3s;
+    padding-bottom: 10px;
+    @include text-styles(normal, 400, 0.9rem, normal, #000);
+    &:hover {
+      transform: translateX(10px);
+    }
+  }
+  &__text {
+    padding-bottom: 1.2rem;
+    @include text-styles(normal, 300, 0.9rem, normal, #5d5d5d);
+  }
+  &__price {
+    @include text-styles(normal, 400, 1rem, normal, $color-accent);
+  }
+}
+
+.advantages {
+  background-color: $background-main;
+  padding-top: 6.4rem;
+  padding-bottom: 6.4rem;
+  &__flex {
+    @include flexbox(row, nowrap, center, center, center);
+    gap: 1.87rem;
+    max-width: 100%;
+  }
+  &__item {
+    @include flexbox(column, nowrap, flex-start, center);
+    max-width: 31.6%;
+    min-height: 134px;
+  }
+  &__img {
+    padding-bottom: 1.75rem;
+  }
+  &__heading {
+    padding-bottom: 1rem;
+    @include text-styles(normal, 400, 1.24rem, normal, #fbfbfb);
+  }
+  &__text {
+    text-align: center;
+    @include text-styles(normal, 300, 0.87rem, normal, #fbfbfb);
+  }
+}
+
+.contact-form {
+  padding-top: 6rem;
+  padding-bottom: 7.8rem;
+  position: relative;
+  background: rgba(244, 244, 244, 0.7);
+  overflow: hidden;
+  &__autor,
+  .email-field {
+    position: relative;
+    z-index: 2;
+  }
+  &:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.7;
+    background-image: url("../img/contact-form__background.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+  }
+  &__flex {
+    @include flexbox(row);
+    gap: 14rem;
+    max-width: 100%;
+  }
+  &__autor {
+    max-width: 31.6%;
+    @include flexbox(row, wrap, center);
+    min-height: 180px;
+  }
+  &__img {
+    padding-bottom: 1.8rem;
+  }
+  &__quote {
+    text-align: center;
+    @include text-styles(normal, 400, 1.25rem, normal, $background-main);
+    &::after {
+      content: "“";
+    }
+    &::before {
+      content: "“";
+    }
+    &_q {
+      @include text-styles(italic, 400, 1.25rem, normal, $background-main);
+    }
+  }
+}
+
+.email-field {
+  @include flexbox(row, nowrap, flex-start, flex-end);
+  max-width: 49%;
+  padding-left: 6.25rem;
+  padding-right: 6.25rem;
+  min-height: 142px;
+  &__form {
+    @include flexbox(column, nowrap, flex-start, center);
+  }
+  &__heading {
+    text-align: center;
+    @include text-styles(normal, 700, 1.5rem, 167.2%, $background-main);
+  }
+  &__text {
+    padding-bottom: 2rem;
+    display: block;
+    @include text-styles(normal, 400, 1.1rem, 167.2%, $background-main);
+  }
+  &__input {
+    border: none;
+    padding: 0.9rem 1rem;
+    background-color: #e1e1e1;
+    border-top-left-radius: 3.1rem;
+    border-bottom-left-radius: 3.1rem;
+    @include text-styles(normal, 400, 0.87rem, normal, $background-main);
+    &:focus {
+      outline: none;
+    }
+    &-style {
+      @include flexbox();
+      gap: 0;
+    }
+  }
+
+  &__btn {
+    background-color: $color-accent;
+    border: none;
+    padding: 0.9rem 1rem;
+    border-top-right-radius: 3.1rem;
+    border-bottom-right-radius: 3.1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    @include text-styles(normal, 400, 0.87rem, normal, #fff);
+    &:hover {
+      background-color: #ec5f72;
+    }
+  }
+}
+
+.footer {
+  background-color: $background-main;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  &__flex {
+    @include flexbox(row, nowrap, space-between, center);
+    min-height: 32px;
+    max-width: 100%;
+  }
+  &__text {
+    @include text-styles(normal, 400, 1rem, normal, #fbfbfb);
+  }
+  &__icons {
+    @include flexbox();
+    gap: 0.45rem;
+  }
+  &__icon {
+    background-color: #fff;
+    padding: 0.5rem 0.6rem;
+    transition: all 0.3s;
+    &:hover {
+      background-color: $color-accent;
+      .social-icon path {
+        fill: #fff;
+      }
+    }
+  }
+}
+
+.social-icon path {
+  fill: #000;
+}
+
+@media #{$tablet} {
+  html {
+    font-size: 62.5%;
+  }
+
+  .container {
+    max-width: 735px;
+    margin: 0 auto;
+  }
+  .header {
+    &__left {
+      max-width: 15%;
+    }
+    &__right {
+      max-width: 25.5%;
+    }
+  }
+  .mobile-menu {
+    right: -100%;
+    width: 100%;
+    height: 360px;
+    &__box {
+      flex-direction: row;
+      gap: 100px;
+      justify-content: center;
+    }
+  }
+  .promo {
+    &__info {
+      border-left: 1.2rem solid $color-accent;
+    }
+    &__title {
+      font-size: 4.3rem;
+    }
+    &__heading {
+      font-size: 2.4rem;
+    }
+    &__content {
+      max-width: 43%;
+    }
+  }
+  .sale {
+    &__item {
+      position: relative;
+      min-height: 167px;
+      &_big {
+        min-height: 117px;
+      }
+    }
+    &__img {
+      min-height: 3.2rem;
+    }
+    &__text {
+      font-size: 2.4rem;
+    }
+
+    &__heading {
+      font-size: 2.4rem;
+    }
+  }
+
+  .product-box {
+    &__heading {
+      font-size: 2.75rem;
+    }
+    &__text {
+      font-size: 1.4rem;
+      padding-bottom: 7.3rem;
+    }
+    &__btn {
+      font-size: 1.6rem;
+      padding: 0.9rem 2.4rem;
+      max-width: 28.8%;
+    }
+  }
+
+  .product {
+    max-width: 48%;
+    &__heading {
+      font-size: 1.6rem;
+    }
+    &__text {
+      font-size: 1.4rem;
+    }
+    &__price {
+      font-size: 1.6rem;
+    }
+  }
+
+  .advantages {
+    &__flex {
+      display: flex;
+      flex-direction: column;
+      gap: 4.8rem;
+    }
+    &__item {
+      flex-direction: column;
+      max-width: 48.9%;
+    }
+    &__heading {
+      font-size: 2rem;
+    }
+    &__text {
+      font-size: 1.4rem;
+    }
+  }
+  .contact-form {
+    &__flex {
+      flex-direction: column;
+      align-items: center;
+      gap: 5rem;
+    }
+    &__autor {
+      max-width: 48.9%;
+      min-height: 180px;
+    }
+    &__quote {
+      font-size: 2rem;
+      &_q {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .email-field {
+    max-width: 48.8%;
+    padding-left: 0;
+    padding-right: 0;
+    &__heading {
+      font-size: 2.4rem;
+    }
+    &__text {
+      font-size: 1.8rem;
+    }
+    &__input {
+      padding: 1.4rem 2.9rem;
+      font-size: 1.4rem;
+    }
+    &__btn {
+      padding: 1.4rem 1.9rem;
+      font-size: 1.4rem;
+    }
+  }
+  .footer {
+    &__text {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media #{$mobile} {
+  html {
+    font-size: 50%;
+  }
+
+  .container {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .header {
+    &__left {
+      max-width: 31.6%;
+      gap: 5.1rem;
+      flex-wrap: nowrap;
+    }
+    &__right {
+      max-width: 8.2%;
+      a:nth-child(2),
+      a:nth-child(3) {
+        display: none;
+      }
+    }
+  }
+
+  .mobile-menu {
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    &__box {
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+    &__heading {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+    &__link {
+      font-size: 2.5rem;
+    }
+  }
+  .promo {
+    &__content {
+      max-width: 95%;
+      min-height: 0;
+    }
+    &__title {
+      font-size: 4.75rem;
+    }
+    &__heading {
+      font-size: 2.5rem;
+    }
+    &__img {
+      display: none;
+    }
+    &__flex {
+      justify-content: center;
+      max-width: 100%;
+      padding-top: 17.5rem;
+      padding-bottom: 17.5rem;
+      min-height: 364px;
+    }
+    &__info {
+      border-left: 1.7rem solid $color-accent;
+      padding-left: 1.4rem;
+      margin-top: 0;
+    }
+  }
+
+  .sale {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+    &__flex {
+      gap: 3.7rem;
+    }
+    &__item {
+      position: relative;
+      min-height: 248px;
+      max-width: 100%;
+      &_big {
+        min-height: 111px;
+        max-width: 100%;
+      }
+    }
+    &__img {
+      min-height: 13rem;
+    }
+    &__text {
+      font-size: 1.8rem;
+    }
+    &__heading {
+      font-size: 2.8rem;
+    }
+  }
+
+  .product-box {
+    padding-bottom: 10rem;
+    &__heading {
+      font-size: 3.5rem;
+    }
+    &__text {
+      font-size: 1.6rem;
+      padding-bottom: 7.6rem;
+      text-align: center;
+    }
+    &__flex {
+      gap: 1.8rem;
+      padding-bottom: 4.6rem;
+    }
+    &__btn {
+      font-size: 1.88rem;
+      max-width: 62%;
+    }
+  }
+
+  .product {
+    max-width: 100%;
+    &__content {
+      padding: 2.8rem 3.3rem 1.9rem 2.3rem;
+    }
+    &__heading {
+      padding-bottom: 1.48rem;
+      font-size: 1.5rem;
+    }
+    &__text {
+      padding-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+    &__price {
+      font-size: 1.88rem;
+    }
+  }
+
+  .advantages {
+    &__flex {
+      display: flex;
+      flex-direction: column;
+      gap: 4.8rem;
+    }
+    &__item {
+      flex-direction: column;
+      max-width: 100%;
+    }
+    &__heading {
+      font-size: 2.5rem;
+      padding-bottom: 1.8rem;
+    }
+    &__text {
+      font-size: 1.75rem;
+    }
+  }
+  .contact-form {
+    &__flex {
+      flex-direction: column;
+      align-items: center;
+      gap: 5rem;
+    }
+    &__autor {
+      max-width: 100%;
+      min-height: 140px;
+    }
+    &__img {
+      padding-bottom: 3.7rem;
+    }
+    &__quote {
+      font-size: 2.25rem;
+      &_q {
+        font-size: 2.25rem;
+      }
+    }
+  }
+
+  .email-field {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    &__heading {
+      font-size: 3rem;
+    }
+    &__text {
+      font-size: 1.75rem;
+    }
+    &__input {
+      padding: 2rem 2.9rem;
+      font-size: 1.4rem;
+    }
+    &__btn {
+      padding: 2rem 1.9rem;
+      font-size: 1.75rem;
+      max-width: 100%;
+    }
+  }
+
+  .footer {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    &__flex {
+      min-height: 100px;
+      max-width: 100%;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 5rem;
+      margin-bottom: 3.5rem;
+      margin-top: 3.5rem;
+    }
+    &__text {
+      font-size: 2rem;
+    }
+  }
+}
