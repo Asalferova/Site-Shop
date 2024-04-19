@@ -5,8 +5,7 @@
 Проект представляет собой главную страницу интернет-магазина, разработанную с использованием HTML и SCSS. 
 
 ##  Технологии  
-   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="50px" height="50px"/>
-   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg" width="50px" height="50px"/>
+   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="50px" height="50px"/>       <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg" width="50px" height="50px"/>
    
    * Стили для страницы написаны с помощью SCSS, HTML написан по методологии **БЭМ**
    * Также на странице используется SVG спрайт для повторяющихся svg-иконок.
