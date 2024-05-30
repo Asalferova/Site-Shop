@@ -327,7 +327,6 @@ picture img {
   align-content: stretch;
   max-width: 31.5%;
   position: relative;
-  min-height: 581px;
 }
 .product:hover .product__img {
   filter: brightness(0.5);
@@ -337,7 +336,7 @@ picture img {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: center;
   align-content: stretch;
 }
 .product__add {

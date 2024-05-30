@@ -245,12 +245,11 @@ picture {
   @include flexbox(column);
   max-width: 31.5%;
   position: relative;
-  min-height: 581px;
   &:hover .product__img {
     filter: brightness(0.5);
   }
   &:hover .product__add {
-    @include flexbox();
+    @include flexbox(row,nowrap,flex-start,center,stretch);
   }
   &__add {
     display: none;
